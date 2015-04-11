@@ -18,28 +18,30 @@
 
 module pwm_demo(
 	input CLK_100MHz,
-	input [25:10] IO,
+	input [2:0] ADDRESS,
+	input [7:0] DATA,
 	input SW1,
-	output [9:3] IO,
+	output [7:0] PWM,
 	output reg [7:0] LED
 	);
 
-	wire [7:0] address;
+	wire [2:0] address;
 	wire [7:0] data;
 	wire latch;
-	assign address = IO[25:18];
-	assign data = IO[17:10];
+	assign address = ADDRESS;
+	assign data = DATA;
 	assign latch = ~SW1;
 
 	reg [7:0] period [0:256-1];
 
-	pwm_generator pwm3(.clk(CLK_100MHz), .period(period[3]), .pin(IO[3]));
-	pwm_generator pwm4(.clk(CLK_100MHz), .period(period[4]), .pin(IO[4]));
-	pwm_generator pwm5(.clk(CLK_100MHz), .period(period[5]), .pin(IO[5]));
-	pwm_generator pwm6(.clk(CLK_100MHz), .period(period[6]), .pin(IO[6]));
-	pwm_generator pwm7(.clk(CLK_100MHz), .period(period[7]), .pin(IO[7]));
-	pwm_generator pwm8(.clk(CLK_100MHz), .period(period[8]), .pin(IO[8]));
-	pwm_generator pwm9(.clk(CLK_100MHz), .period(period[9]), .pin(IO[9]));
+	pwm_generator pwm0(.clk(CLK_100MHz), .period(period[0]), .pin(PWM[0]));
+	pwm_generator pwm1(.clk(CLK_100MHz), .period(period[1]), .pin(PWM[1]));
+	pwm_generator pwm2(.clk(CLK_100MHz), .period(period[2]), .pin(PWM[2]));
+	pwm_generator pwm3(.clk(CLK_100MHz), .period(period[3]), .pin(PWM[3]));
+	pwm_generator pwm4(.clk(CLK_100MHz), .period(period[4]), .pin(PWM[4]));
+	pwm_generator pwm5(.clk(CLK_100MHz), .period(period[5]), .pin(PWM[5]));
+	pwm_generator pwm6(.clk(CLK_100MHz), .period(period[6]), .pin(PWM[6]));
+	pwm_generator pwm7(.clk(CLK_100MHz), .period(period[7]), .pin(PWM[7]));
 
 	always @(posedge CLK_100MHz) begin
 		if (latch) begin
