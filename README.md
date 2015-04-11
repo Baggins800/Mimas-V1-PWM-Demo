@@ -1,5 +1,6 @@
 # Mimas-V1-PWM-Demo
 
+[![Build Status](https://jenkins.cyrozap.com/job/Mimas-V1-PWM-Demo/badge/icon)](https://jenkins.cyrozap.com/job/Mimas-V1-PWM-Demo/)
 [![License](http://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Note: The code in its current state does not actually work.
